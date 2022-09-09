@@ -1,5 +1,9 @@
 # fbot_vss_python
-organizando 
 
+Para contrinuir com o projeto ler o arquivo [CONTRIBUTING.md](CONTRIBUTING.md)
 
-teste
+Comandos para instalar o FIRASim se encontram no arquivo [install-firamsim.sh](install-firamsim.sh)
+
+## Estrutura do projeto
+
+`Em desenvolvimento`
