@@ -14,12 +14,7 @@ Para contribuir com o projeto verificar as *Issues* criadas
 Na mensagem do commit você deve especifar qual classe foi tratada e suas respectivas alterações
 Exemplo:
 
-```
-Communication: 
- - alterei a porta de comunicação com o simulador
- - ajustei erro tal
- - fiz essa alteração
-```
+`Communication: alterei a porta de comunicação com o simulador`
 
 **Qualquer duvida referente ao projeto ou o precesso de contribuição, perguntar no nosso discord!**
 
