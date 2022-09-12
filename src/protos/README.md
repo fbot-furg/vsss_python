@@ -1,5 +1,11 @@
 # FIRAMessage
 
+comonado para gerar as protobuff
+
+```
+protoc -I=. --python_out=. ./*.proto
+```
+
 **detection.proto**:
 
 >   The message sent from FIRASim to Teams contains position of agents and ball and field propeties.
