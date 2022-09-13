@@ -8,7 +8,16 @@ sys.path.append("..")
 # from protos.packet import Environment, Packet
 # from protos.command import Commands, Command
 
-class Communication:
+class SingletonMeta(type):
+    _instances = {}
+
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            instance = super().__call__(*args, **kwargs)
+            cls._instances[cls] = instance
+        return cls._instances[cls]
+
+class Communication(metaclass=SingletonMeta):
     
     LOCALHOST = "127.0.0.1"
     HOST = "224.0.0.1"
@@ -62,16 +71,13 @@ class Communication:
         return self.__environment.frame
     
     def ball(self):
-        frame = self.frame()
-        return frame.ball
+        return self.frame().ball
     
     def blue_team(self):
-        frame = self.frame()
-        return frame.robots_blue
+        return self.frame().robots_blue
 
     def yellow_team(self):
-        frame = self.frame()
-        return frame.robots_yellow
+        return self.frame().robots_yellow
     
     def blue_robot(self, id):
         return self.blue_team()[id]
