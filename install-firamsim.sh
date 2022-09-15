@@ -27,7 +27,7 @@ sudo qmake ..
 sudo make
 
 <!-- Run Firasim -->
-/vsss_ws/FIRASim/bin/FIRASim
+./vsss_ws/FIRASim/bin/FIRASim
 
 <!-- Run VSSReferee -->
-/vsss_ws/VSSReferee/bin/VSSReferee --3v3 --record false
+./vsss_ws/VSSReferee/bin/VSSReferee --3v3 --record false
