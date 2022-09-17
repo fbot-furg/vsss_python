@@ -1,6 +1,6 @@
 import socket
 import sys
-sys.path.insert(0,"/home/murilo/Documentos/fbot-vss-python/src/protos")
+sys.path.append(0,"./protos")
 from packet_pb2 import Environment, Packet
 from command_pb2 import Commands, Command
 

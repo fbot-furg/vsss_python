@@ -5,8 +5,8 @@ import time
 
 sys.path.append("..")
 
-# from protos.packet import Environment, Packet
-# from protos.command import Commands, Command
+from protos.packet_pb2 import Environment, Packet
+from protos.command_pb2 import Commands, Command
 
 class SingletonMeta(type):
     _instances = {}
@@ -36,21 +36,17 @@ class Communication(metaclass=SingletonMeta):
         self.__thread.start()
         
     def __parse_environment(self):
-        count = 0
         
         while not self.__stop:
-            # socket = self.__create_socket(self.VISION_ADDR)
+            socket = self.__create_socket(self.VISION_ADDR)
             
-            # environment = Environment()
+            environment = Environment()
                    
-            # data, _ = socket.recvfrom(2048)
-            # environment.ParseFromString(data)
+            data, _ = socket.recvfrom(2048)
+            environment.ParseFromString(data)
                         
-            self.__environment = count
+            self.__environment = environment
             
-            count += 1
-            
-            time.sleep(0.1)
             
     def __create_socket(self, port):
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
