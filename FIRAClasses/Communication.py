@@ -50,5 +50,3 @@ class Communication:
 
 
 
-comn = Communication()
-print(comn.blue_team())
