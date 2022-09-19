@@ -24,6 +24,7 @@ class Robot:
 
     def y(self):
         return self._Robot()[1]
+        
     def orient(self):
         return self._Robot()[2]
 
