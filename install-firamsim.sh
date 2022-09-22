@@ -10,7 +10,7 @@ cmake ..
 make 
 sudo make install
 
-cd vsss_ws
+cd ~/vss_ws
 sudo git clone https://github.com/VSSSLeague/FIRASim.git
 cd FIRASim
 sudo mkdir build
@@ -18,7 +18,7 @@ cd build
 sudo cmake ..
 sudo make
 
-cd /vsss_ws
+cd ~/vss_ws
 sudo git clone https://github.com/VSSSLeague/VSSReferee.git
 cd VSSReferee
 sudo mkdir build 
