@@ -1,8 +1,9 @@
+from re import A
 import socket
 import sys
+sys.path.insert(0,"/home/murilo/Documentos/fbot_vss_python/FIRAClasses/protos")
 
-from protos.common_pb2 import Frame
-sys.path.insert(0,"./protos")
+from common_pb2 import Frame
 from packet_pb2 import Environment, Packet
 from command_pb2 import Commands, Command
 
@@ -21,6 +22,24 @@ class Communication:
         socket_receive.bind((self.HOST,self.VISION_ADDR))
         data, addr = socket_receive.recvfrom(2048) 
         return data
+
+    def __insert(self, packet_byte):
+        socket_insert = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) #declaro um socket        
+        socket_insert.sendto(packet_byte,(self.LOCALHOST,self.COMMAND_ADDR))
+
+
+    def move(self, id, team, left_wheel, right_wheel):
+        packet = Packet()
+        cmd = Command()
+        cmd.id = id
+        cmd.yellowteam = team
+        cmd.wheel_left = left_wheel
+        cmd.wheel_right = right_wheel
+        packet.cmd.robot_commands.append(cmd)
+        packet_byte = packet.SerializeToString()
+        self.__insert(packet_byte)
+
+
 
     def __environment(self):
         environment = Environment()
@@ -48,5 +67,8 @@ class Communication:
             if robot.robot_id == id:
                 return([robot.x, robot.y, robot.orientation])
 
+    
 
 
+comm = Communication()
+comm.move(0,True,10,10)

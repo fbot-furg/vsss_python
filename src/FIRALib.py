@@ -1,8 +1,8 @@
 import socket
 import sys
-sys.path.append(0,"./protos")
-from packet_pb2 import Environment, Packet
-from command_pb2 import Commands, Command
+sys.path.insert(0,"./protos")
+from protos.packet_pb2 import Environment, Packet
+from protos.command_pb2 import Commands, Command
 
 localhost = "127.0.0.1" # COMMAD ADDRS
 host = "224.0.0.1"      # VISION ADDRS
