@@ -10,7 +10,7 @@ class go_to:
         self.val_y = val_y
         self.orie = orie
         self.car = Robot(id, team)
-        
+
         car_x = self.car.x()
         car_y = self.car.y()
 
@@ -28,7 +28,7 @@ class go_to:
 
     
     def __err_orientation(self):
-        return ( self.__theta()- self.orie)
+        return self.__theta() - self.car.orient()
 
     def go_to(self):
         robot_speed = 20
@@ -36,9 +36,8 @@ class go_to:
         if self.__dist() < 0.1:
             self.comm.move(self.id, self.team, 0,0)
         else:
-            velocidade = self.__err_orientation * orientation_kp
-
-            if self.x > 0.0:
+            velocidade = self.__err_orientation() * orientation_kp
+            if self.diff_x > 0.0:
                 self.comm.move(self.id, self.team, -velocidade + robot_speed, velocidade + robot_speed)
             else:
                 self.comm.move(self.id, self.team, -velocidade - robot_speed, velocidade - robot_speed)
