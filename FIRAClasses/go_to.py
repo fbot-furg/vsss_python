@@ -10,14 +10,16 @@ class go_to:
         self.val_y = val_y
         self.orie = orie
         self.car = Robot(id, team)
-        self.comm = Communication()
-
-    def __theta(self):
+        
         car_x = self.car.x()
         car_y = self.car.y()
 
         self.diff_x = self.val_x - car_x
         self.diff_y = self.val_y - car_y
+
+        self.comm = Communication()
+
+    def __theta(self):
         return math.atan(self.diff_y/self.diff_x)
 
 
@@ -40,3 +42,8 @@ class go_to:
                 self.comm.move(self.id, self.team, -velocidade + robot_speed, velocidade + robot_speed)
             else:
                 self.comm.move(self.id, self.team, -velocidade - robot_speed, velocidade - robot_speed)
+
+
+while True:
+    go = go_to(0, True, 0, 0, 0)
+    go.go_to()
