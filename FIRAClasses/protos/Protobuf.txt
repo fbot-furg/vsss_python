@@ -1,0 +1,2 @@
+comonado para gerar as protobuff
+protoc -I=. --python_out=. ./*.proto
