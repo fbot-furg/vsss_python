@@ -1,7 +1,7 @@
 from re import A
 import socket
 import sys
-sys.path.insert(0,"/home/murilo/Documentos/fbot_vss_python/FIRAClasses/protos")
+sys.path.insert(0,"/home/castanheira/v3s_ws/FIRA_Class/src/protos")
 
 from common_pb2 import Frame
 from packet_pb2 import Environment, Packet
@@ -18,7 +18,10 @@ class Communication:
 
     
     def __receive(self):
-        socket_receive = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        socket_receive = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+        socket_receive.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        socket_receive.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 128)
+        socket_receive.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_LOOP, 1)
         socket_receive.bind((self.HOST,self.VISION_ADDR))
         data, addr = socket_receive.recvfrom(2048) 
         return data

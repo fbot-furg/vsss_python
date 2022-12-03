@@ -43,6 +43,4 @@ class go_to:
                 self.comm.move(self.id, self.team, -velocidade - robot_speed, velocidade - robot_speed)
 
 
-while True:
-    go = go_to(0, True, 0, 0, 0)
-    go.go_to()
+
