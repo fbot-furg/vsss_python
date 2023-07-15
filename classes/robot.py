@@ -1,3 +1,4 @@
+import math
 from vsss_client import FIRASim, Team, Command
 
 class Robot:
@@ -17,6 +18,11 @@ class Robot:
     
     def orientation(self):
         return self.fira.robot(self.team, self.id).orientation
+    
+    def reverse_orientation(self):
+        return self.orientation() + math.pi
+        
+
 
     def set_speed(self, x, y):
         self.wheel_left = x
